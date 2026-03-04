@@ -153,7 +153,7 @@ with tab3:
                                        value= assignment_edit['description'])
 
        type_options = ["Homework", "Lab"]
-       selected_index = type_options.index(assignment_edit["type"])
+       selected_index = type_options.index(assignment_edit["type"].capitalize())
        
        edit_type = st.radio("Type",type_options, 
                             key=f"edit_type_{assignment_edit['id']}",
