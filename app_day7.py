@@ -12,6 +12,7 @@ st.set_page_config("Orders Management App", layout="wide",initial_sidebar_state=
 if "page" not in st.session_state:
     st.session_state["page"] = "home"
 
+
 if "messages" not in st.session_state:
     st.session_state["messages"]= [
         {
@@ -91,6 +92,7 @@ elif st.session_state["page"] == "orders":
 
                 if st.button("Create Order", key="create_order_btn", type="primary", use_container_width=True):
                     with st.spinner("Creating the order..."):
+                        
                         total = quantity * selected_item["unit_price"]
                         
                         for item in inventory:
@@ -117,7 +119,9 @@ elif st.session_state["page"] == "orders":
                         st.balloons()
 
                         time.sleep(5)
+                       
                         st.session_state["page"] = "home"
+                        
                         st.rerun()
 
         with col2:
@@ -127,12 +131,14 @@ elif st.session_state["page"] == "orders":
                 st.caption("Try Asking: How can I add a new order?")
             with col2:
                 if st.button("Clear", key="clear_chat_btn"):
+                    
                     st.session_state["messages"]= [
                                 {
                             "role" : "assistant",
                             "content": "Hi! How can I help you?"
                         }
                     ]
+                    
                     st.rerun()
 
           
