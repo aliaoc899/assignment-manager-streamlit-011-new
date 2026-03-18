@@ -147,7 +147,7 @@ elif st.session_state["page"] == "orders":
                     with st.chat_message(message["role"]):
                         st.write(message["content"])
 
-            user_input = st.chat_input("Ask a question...",accept_file=True)
+            user_input = st.chat_input("Ask a question...")
             if user_input:
                 with st.spinner("Thinking..."):
                     st.session_state["messages"].append(
