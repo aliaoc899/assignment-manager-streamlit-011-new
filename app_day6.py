@@ -201,25 +201,20 @@ if st.session_state["role"] == "Instructor":
                 edit_type = st.radio("Type",type_options, 
                                         key=f"edit_type_{assignment_edit['id']}",
                                         index= selected_index)        
+                btn_update = st.button("Update", key="update_button",type="secondary", use_container_width=True)
+                if btn_update:
+                    with st.spinner("Updating..."):
+                        time.sleep(5)
+                        assignment_edit['title'] = edit_title
+                        assignment_edit['description'] = edit_description
+                        assignment_edit['type'] = edit_type
 
-            
-            
-            
-            
-            
-            btn_update = st.button("Update", key="update_button",type="secondary", use_container_width=True)
-            if btn_update:
-                with st.spinner("Updating..."):
-                    time.sleep(5)
-                    assignment_edit['title'] = edit_title
-                    assignment_edit['description'] = edit_description
+                        with json_path_assignment.open("w",encoding="utf-8") as f:
+                            json.dump(assignments,f)
 
-                    with json_path.open("w",encoding="utf-8") as f:
-                        json.dump(assignments,f)
-
-                    st.success("Assignment is updated!")
-                    time.sleep(5)
-                    st.rerun()
+                        st.success("Assignment is updated!")
+                        time.sleep(5)
+                        st.rerun()
 
 
 

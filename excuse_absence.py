@@ -93,7 +93,7 @@ if st.session_state["page"] == "dashboard":
                 st.session_state["selected_status_filter"] = None
             
 
-            selected_item = st.selectbox("Status", options= requests, format_func= lambda x: f"{x["status"]}")
+            selected_item = st.selectbox("Status", options= requests, format_func= lambda x: f"{x['status']}")
             st.session_state["selected_status_filter"] = selected_item["status"]
            
 
@@ -118,9 +118,12 @@ if st.session_state["page"] == "dashboard":
                 selection_mode="single-row"
             )
 
+        selection = event.get("selection")
+        selected_rows = selection.get("rows", []) if selection else []
+
         # Check if the user actually clicked on a row
-        if event.selection.rows:
-            selected_index = event.selection.rows[0]
+        if selected_rows:
+            selected_index = selected_rows[0]
             
             # Use the index to grab the original dictionary from your list
             selected_request = requests_list[selected_index]
@@ -197,5 +200,3 @@ elif st.session_state["page"] == "request":
                     time.sleep(4)
                     st.rerun()
                 
-
-
