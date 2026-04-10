@@ -66,7 +66,7 @@ def render_dashboard(assignments):
 
                     st.rerun()
 
-def render_add_new_assignment(assignments, json_path):
+def render_add_edit_new_assignment(assignments, json_path):
     col1,col2 = st.columns([3,1])
 
     with col1:
@@ -158,9 +158,9 @@ def main():
     if st.session_state["page"] == "Assignment Dashboard":
         render_dashboard(assignments=assignments)
     elif st.session_state["page"] == "Add New Assignment":
-        render_add_new_assignment(assignments=assignments, json_path=json_path)
+        render_add_edit_new_assignment(assignments=assignments, json_path=json_path)
     elif st.session_state["page"] == "Edit Assignment":
-        render_add_new_assignment(assignments,json_path)
+        render_add_edit_new_assignment(assignments,json_path)
     
 
 if __name__ == "__main__":
