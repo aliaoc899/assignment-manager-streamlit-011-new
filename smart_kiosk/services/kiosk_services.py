@@ -1,15 +1,7 @@
 import uuid
+from typing import Optional, List, Dict
 
-
-#Query 1: Place a new order for an item and quantity.
-
-#find orders placed for an inventory item using item id. 
-
-#step 2: find how many orders placed for the item using item id
-
-# find item information in invetory
-
-def place_order(inventory: list, orders: list, item_id: str, quantity: int):
+def place_order(inventory: List, orders: list, item_id: str, quantity: int) -> Optional[Dict]:
     # find item in the inventory
     item = find_inventory_item_by_item_id(inventory, item_id)
     # if it exists -> 
@@ -31,12 +23,10 @@ def place_order(inventory: list, orders: list, item_id: str, quantity: int):
             orders.append(new_order)
             return new_order
 
-    
-    
 
-def find_inventory_item_by_item_id(inventory: list, item_id: str):
+def find_inventory_item_by_item_id(inventory: list, item_id: str) -> Optional[Dict]:
     for item in inventory:
-        if item.get('id') == item_id:
+        if item.get('item_id') == item_id:
             return item
     return None
     
