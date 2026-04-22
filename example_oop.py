@@ -29,4 +29,24 @@ c1.increment_2()
 
 print(f"{c1.current()}")
 
+#--------------- OO - Day 2
+class Employee:
+    def __init__(self, name: str , base_salary: float) -> None:
+        self.name = name
+        self.base_salary = base_salary
+
+
+    def calculate_bouns(self, performance_multiplier: float)-> float:
+        return self.base_salary * performance_multiplier
+
+
+emp = Employee("Alice", 50000.0)
+
+bonus = emp.calculate_bouns(1.1)
+
+
+print(f"The bonus for {emp.name} is {bonus}")
+
+
+
 
